@@ -32,7 +32,7 @@ DHT dht(DHTPIN, DHTTYPE);
 
 //Serial
 
-using Type = MAX6675_Thermocouple*;
+//using Type = MAX6675_Thermocouple*;
 #define CK_PIN 2
 #define SO_PIN 3
 //MAX6675 thermocoupleA(CK_PIN, CS_PIN_A, SO_PIN);
