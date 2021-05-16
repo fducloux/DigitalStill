@@ -1,4 +1,4 @@
- /*
+/*
  * Digital Still monitor 
  * 
  * DHT11 on pin 53
@@ -32,7 +32,7 @@ DHT dht(DHTPIN, DHTTYPE);
 
 //Serial
 
-//using Type = MAX6675_Thermocouple*;
+using Type = MAX6675_Thermocouple*;
 #define CK_PIN 2
 #define SO_PIN 3
 //MAX6675 thermocoupleA(CK_PIN, CS_PIN_A, SO_PIN);
@@ -63,17 +63,19 @@ void loop() {
   String str = String("DHT>T:")+String(DHTt)+String("       ")+String("DHT>H:")+String(DHTh);
   Serial.println(str);
   
-  for (int i = 0; i <= sizeof(TC) ; i++)
+  for (int i = 0; i <= sizeof(TC) / sizeof(TC[0]) -1 ; i++)
   {
     
     float temp=TC[i].readCelsius();
+    //Serial.println(i);
     if (temp >= 0.1 )
     {
       String str = String("TC")+String(i)+String("=")+String(temp);
       Serial.println(str);
 //      Serial.println(TC[i].readCelsius());
-      //delay(50);
+      delay(150);
     }
+    
   }
   delay(50);  
   Serial.println("--check--");
